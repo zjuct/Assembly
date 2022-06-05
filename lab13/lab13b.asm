@@ -14,16 +14,16 @@ start:
 	mov si,offset myloop
 	mov ax,0
 	mov es,ax
-	mov di,7ch
+	mov di,200H
 	
 	mov cx,offset myloopend - offset myloop
 	cld
-	movsb
+	rep movsb
 	
 	mov ax,0	
 	mov es,ax
-	mov es:[7ch*4],200H
-	mov es:[7ch*4+2],0
+	mov word ptr es:[7ch*4],200H
+	mov word ptr es:[7ch*4+2],0
 	
 	mov ax,4c00H
 	int 21H
